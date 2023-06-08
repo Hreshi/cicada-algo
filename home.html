@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .center-div {
+        width: 300px;
+        /* Adjust the width as needed */
+        margin: 0 auto;
+        /* Set left and right margin to "auto" */
+    }
+</style>
+
+<body>
+    <div class="center-div">
+        <h2>Image Cipher</h2>
+        <img id="image-cipher" src="" alt="">
+        <br>
+        <label for="imageInput">Image:</label>
+        <input type="file" id="imageInput"><br>
+
+        <button id="generateButton">Generate URL</button>
+    </div>
+
+</body>
+<script>
+    document.getElementById('generateButton').addEventListener('click', function () {
+        const imageInput = document.getElementById('imageInput');
+        
+        const file = imageInput.files[0];
+    
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const arrayBuffer = e.target.result;
+
+            // Create a Blob from the ArrayBuffer
+            const blob = new Blob([arrayBuffer], { type: file.type });
+
+            // Create an object URL for the blob
+            const imageUrl = URL.createObjectURL(blob);
+
+            // Perform further processing or display the generated URL
+            console.log(imageUrl);
+            document.getElementById('image-cipher').src = imageUrl
+        };
+        reader.readAsArrayBuffer(file);
+    });
+</script>
+<script src="sequence.js"></script>
+<script src="cipher.js"></script>
+<script src="decipher.js"></script>
+<script src="image_generate.js"></script>
+
+</html>
