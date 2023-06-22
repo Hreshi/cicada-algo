@@ -18,8 +18,6 @@ class CipherAlgorithm {
         sessionStorage.setItem('link', imageLink);
         const image = document.createElement('img');
         image.src = imageLink;
-        document.body.appendChild(image);
-        document.body.appendChild(document.createElement('br'));
         return imageLink;
     }
     async createImage(pixelBytes, width, height) {
